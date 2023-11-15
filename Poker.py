@@ -1,6 +1,5 @@
 import random
 import collections
-import matplotlib.pyplot as plt
 count_color = 4
 count_symbols = 13
 def create_cards ():
@@ -82,74 +81,3 @@ def royal_flush(cards):
             11 in symbols and\
             10 in symbols and\
             9 in symbols)
-
-
-def check_combinations(cards, dic):
-    if royal_flush(cards):
-        dic["Royal Flush"] += 1
-        return
-    elif straight_flush(cards):
-        dic["Straight Flush"] += 1
-        return
-    elif four_of_a_kind(cards):
-        dic["Four of a kind"] += 1
-        return
-    elif full_house(cards):
-        dic["Full House"] += 1
-        return
-    elif flush(cards):
-        dic["Flush"] += 1
-        return
-    elif straight(cards):
-        dic["Straight"] += 1
-        return
-    elif three_of_a_kind(cards):
-        dic["Three of a kind"] += 1
-        return
-    elif two_pairs(cards):
-        dic["Two Pair"] += 1
-        return
-    elif pair(cards):
-        dic["Pair"] += 1
-        return
-    else:
-        dic["High Card"] += 1
-        return
-
-def execute_testing(count=1):
-    dic = {
-    "Royal Flush": 0,
-    "Straight Flush": 0,
-    "Four of a kind": 0,
-    "Full House": 0,
-    "Flush": 0,
-    "Straight": 0,
-    "Three of a kind": 0,
-    "Two Pair": 0,
-    "Pair": 0,
-    "High Card": 0
-    }
-    propability = {
-    "Royal Flush": 0,
-    "Straight Flush": 0,
-    "Four of a kind": 0,
-    "Full House": 0,
-    "Flush": 0,
-    "Straight": 0,
-    "Three of a kind": 0,
-    "Two Pair": 0,
-    "Pair": 0,
-    "High Card": 0
-    }
-    for i in range(count):
-        check_combinations(get_cards(create_cards(),5), dic)
-    print(dic)
-    for i in dic:
-        propability[i] = (dic[i] / count) * 100
-    print(propability)
-    ax = plt.subplot()
-    ax.pie(list(propability.values()), labels=list(propability.keys()), autopct="%1.5f%%", radius=1.3)
-    plt.show()
-
-
-execute_testing(1_000_000)
