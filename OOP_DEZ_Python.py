@@ -3,10 +3,6 @@ from enum import Enum
 class Gender(Enum):
     Male = 0
     Female = 1
-
-class Abteilung(Enum):
-    Informatik = 0
-    Buchhaltung = 1
     
 class Person:
     person_count = 0
